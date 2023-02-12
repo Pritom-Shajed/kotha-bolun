@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 class AuthContoller extends GetxController{
   static AuthContoller instance = Get.find();
 
+  //REGISTER
   register(String emailAddress, String password) async{
     try {
       final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -12,6 +13,7 @@ class AuthContoller extends GetxController{
         password: password,
       );
       Get.back();
+
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -27,6 +29,7 @@ class AuthContoller extends GetxController{
     }
   }
 
+  //LOGIN
   login(String emailAddress, String password) async{
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(

@@ -3,7 +3,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:messenger/constants/constants.dart';
 
 
-
 Widget customButton({required String text, required VoidCallback onTap}){
   return InkWell(
     onTap: onTap,
@@ -28,6 +27,16 @@ Widget customButton({required String text, required VoidCallback onTap}){
   });
 }
 
+imageDialog(BuildContext context){
+  showDialog(context: context, builder: (context){
+    return Dialog(
+      child: Column(
+        children: [],
+      ),
+    );
+  });
+}
+
 Widget verticalSpace(){
   return Divider(color: Colors.transparent);
 }
@@ -35,6 +44,3 @@ Widget horizontalSpace(){
   return SizedBox(width: 10,);
 }
 
- pickImage(ImageSource src) async{
-   XFile? image = await ImagePicker().pickImage(source: src);
-}
