@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "278934221460",
+    "project_id": "kotha-bolun",
+    "storage_bucket": "kotha-bolun.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:278934221460:android:6e9a414d7ed0eadbfffa81",
+        "android_client_info": {
+          "package_name": "com.messenger.messenger"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3QBKlJvoQunNcsutW4u2SGyAq2Y5018g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
