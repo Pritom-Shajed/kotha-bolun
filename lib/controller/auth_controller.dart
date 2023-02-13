@@ -13,19 +13,17 @@ class AuthContoller extends GetxController{
         password: password,
       );
       Get.back();
-
+      Get.snackbar('User Registered', 'Thanks for choosing \'Kotha Bolun\'');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        print('The password provided is too weak.');
         Get.snackbar('Week Password', 'The password provided is too weak.');
       } else if (e.code == 'email-already-in-use') {
-        print('The account already exists for that email.');
-        Get.snackbar('Email exists', 'The account already exists for that email.');
+        Get.snackbar('Email exists', 'The account already exists for $emailAddress.');
       }
     } catch (e) {
       print(e);
-      Get.snackbar('Error Occured', e.toString());
       Get.back();
+      Get.snackbar('Error Occured', e.toString());
     }
   }
 
@@ -36,13 +34,12 @@ class AuthContoller extends GetxController{
           email: emailAddress,
           password: password
       );
+      Get.snackbar('Logged In', 'Welcome back $emailAddress!');
       Get.toNamed('/chatScreen');
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
         Get.snackbar('User not found', 'Kindly register first');
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
         Get.snackbar('Incorrect Password', 'Wrong password provided for $emailAddress.');
       }
     }
