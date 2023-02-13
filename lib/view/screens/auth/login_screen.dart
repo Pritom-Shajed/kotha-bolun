@@ -22,11 +22,23 @@ class Login extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  Text('Login Now, অনেক কথা জমে আছে!', style: titleTextStyle,),
                   SizedBox(
-                    height: 120,
-                    child: Image.asset('assets/images/logo.png'),
+                    height: 200,
+                    child: Image.asset('assets/images/banner.png'),
                   ),
-                  Text('KOTHA BOLUN', style: titleTextStyle),
+                  verticalSpace(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 50,
+                        child: Image.asset('assets/images/logo.png'),
+                      ),
+                      horizontalSpace(),
+                      Text('KOTHA BOLUN', style: titleTextStyle),
+                    ],
+                  ),
                   verticalSpace(),
                   TextFormField(
                     validator: (value) {
@@ -73,8 +85,9 @@ class Login extends StatelessWidget {
                   verticalSpace(),
                   SizedBox(
                     width: MediaQuery.of(context).size.width / 2,
-                    child: customButton(
+                    child: customTextButton(
                       text: 'Login',
+                      bgColor: Colors.blue,
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
                           AuthContoller.instance.login(

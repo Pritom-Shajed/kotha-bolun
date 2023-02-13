@@ -3,17 +3,32 @@ import 'package:image_picker/image_picker.dart';
 import 'package:messenger/constants/constants.dart';
 
 
-Widget customButton({required String text, required VoidCallback onTap}){
+Widget customTextButton({required String text, required Color bgColor, required VoidCallback onTap}){
   return InkWell(
     onTap: onTap,
     child: Container(
       alignment: Alignment.center,
       padding: EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: blueColor,
-        borderRadius: BorderRadius.circular(5)
+          color: bgColor,
+          borderRadius: BorderRadius.circular(16)
       ),
-      child: Text(text, style: TextStyle(color: Colors.white),),
+      child: Text(text, style: TextStyle(color: whiteColor),)
+    ),
+  );
+}
+
+Widget customIconButton({required IconData icon, required Color bgColor, required VoidCallback onTap}){
+  return InkWell(
+    onTap: onTap,
+    child: Container(
+      alignment: Alignment.center,
+      padding: EdgeInsets.all(12),
+      decoration: BoxDecoration(
+        color: bgColor,
+        borderRadius: BorderRadius.circular(40)
+      ),
+      child: Icon(icon, color: Colors.white,),
     ),
   );
 }
@@ -27,15 +42,6 @@ Widget customButton({required String text, required VoidCallback onTap}){
   });
 }
 
-imageDialog(BuildContext context){
-  showDialog(context: context, builder: (context){
-    return Dialog(
-      child: Column(
-        children: [],
-      ),
-    );
-  });
-}
 
 Widget verticalSpace(){
   return Divider(color: Colors.transparent);

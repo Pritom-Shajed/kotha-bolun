@@ -82,7 +82,7 @@ class MessageListItem extends StatelessWidget {
         children: [
           Text(email),
           InkWell(
-            onTap: (){
+            onLongPress: (){
               isMessageByMe == true
                   ? alertDialog(
                 context: context,

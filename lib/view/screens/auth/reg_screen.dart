@@ -23,11 +23,23 @@ class RegScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
+                    Text('Register Now এবং কথা বলুন!', style: titleTextStyle,),
                     SizedBox(
-                      height: 120,
-                      child: Image.asset('assets/images/logo.png'),
+                      height: 200,
+                      child: Image.asset('assets/images/banner.png'),
                     ),
-                    Text('KOTHA BOLUN', style: titleTextStyle),
+                    verticalSpace(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          height: 50,
+                          child: Image.asset('assets/images/logo.png'),
+                        ),
+                        horizontalSpace(),
+                        Text('KOTHA BOLUN', style: titleTextStyle),
+                      ],
+                    ),
                     verticalSpace(),
                     TextFormField(
                       validator: (value) {
@@ -76,8 +88,9 @@ class RegScreen extends StatelessWidget {
                     verticalSpace(),
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 2,
-                      child: customButton(
+                      child: customTextButton(
                         text: 'Register',
+                        bgColor: Colors.blue,
                         onTap: () {
                           if (_formKey.currentState!.validate()) {
                             AuthContoller.instance.register(
