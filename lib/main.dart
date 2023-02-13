@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/register', page: () => RegScreen()),
         GetPage(name: '/chatScreen', page: ()=> ChatScreen(), binding: ChatScreenBinding()),
       ],
-      initialRoute: '/login',
+      initialRoute: '/splashScreen',
     );
   }
 }
