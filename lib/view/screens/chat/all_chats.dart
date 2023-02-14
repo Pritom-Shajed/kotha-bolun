@@ -1,10 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:messenger/constants/constants.dart';
 import 'package:messenger/controller/msg_controller.dart';
 import 'package:get/get.dart';
 import 'package:messenger/widgets/widgets.dart';
+import 'package:shimmer/shimmer.dart';
 
 class AllChats extends StatelessWidget {
   static MsgController msgController = Get.find();
@@ -61,15 +64,15 @@ class MessageListItem extends StatelessWidget {
   String image;
   bool isImageSent;
 
-  MessageListItem(
-      {Key? key,
-      required this.id,
-      required this.email,
-      required this.message,
-      required this.isMessageByMe,
-      required this.image,
-      required this.isImageSent,})
-      : super(key: key);
+  MessageListItem({
+    Key? key,
+    required this.id,
+    required this.email,
+    required this.message,
+    required this.isMessageByMe,
+    required this.image,
+    required this.isImageSent,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -82,21 +85,25 @@ class MessageListItem extends StatelessWidget {
         children: [
           Text(email),
           InkWell(
-            onLongPress: (){
+            onLongPress: () {
               isMessageByMe == true
                   ? alertDialog(
-                context: context,
-                title: 'Delete the message?',
-                action: [
-                  TextButton(onPressed: (){
-                    msgController.deleteMessage(id: id);
-                    Get.back();
-                  }, child: Text('Yes')),
-                  TextButton(onPressed: (){
-                    Get.back();
-                  }, child: Text('No'))
-                ],
-              )
+                      context: context,
+                      title: 'Delete the message?',
+                      action: [
+                        TextButton(
+                            onPressed: () {
+                              msgController.deleteMessage(id: id);
+                              Get.back();
+                            },
+                            child: Text('Yes')),
+                        TextButton(
+                            onPressed: () {
+                              Get.back();
+                            },
+                            child: Text('No'))
+                      ],
+                    )
                   : null;
             },
             child: Container(
@@ -120,15 +127,40 @@ class MessageListItem extends StatelessWidget {
               ),
             ),
           ),
-           SizedBox(height: 5,),
-           isImageSent == true?
-           Container(
-             height: 200,
-             width: 200,
-             decoration: BoxDecoration(
-               image: DecorationImage(image: NetworkImage(image),),
-             ),
-          ): Container(),
+          SizedBox(
+            height: 5,
+          ),
+          isImageSent == true
+              ? CachedNetworkImage(
+                  imageUrl: image,
+                  imageBuilder: (context, imageProvider) {
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(10),
+                      child: SizedBox(
+                        width: 200,
+                        height: 200,
+                        child: InstaImageViewer(
+                          child: Image(
+                            image: imageProvider,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                  placeholder: (context, url) => ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Shimmer.fromColors(
+                      child: Container(
+                        width: 200.0,
+                        height: 200.0,
+                        color: Colors.white,
+                      ),
+                      baseColor: Colors.grey[300]!,
+                      highlightColor: Colors.grey[100]!,
+                    ),
+                  ),
+                )
+              : Container(),
         ],
       ),
     );

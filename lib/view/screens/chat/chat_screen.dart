@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:insta_image_viewer/insta_image_viewer.dart';
 import 'package:messenger/constants/constants.dart';
 import 'package:messenger/controller/msg_controller.dart';
 import 'package:messenger/view/screens/chat/all_chats.dart';
@@ -174,17 +175,19 @@ class _ChatScreenState extends State<ChatScreen> {
               ),
               myImage != null ?
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 10),
+                    margin: EdgeInsets.only(top: 5),
                     color: greyColor,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          height: MediaQuery.of(context).size.width/2,
+                        SizedBox(
                           width: MediaQuery.of(context).size.width/2,
-                            decoration: BoxDecoration(
-                              image: DecorationImage(image: FileImage(myImage!))
+                          height: MediaQuery.of(context).size.width/2,
+                          child: InstaImageViewer(
+                            child: Image(
+                              image: FileImage(myImage!),
                             ),
+                          ),
                         ),
                         horizontalSpace(),
                         Column(
