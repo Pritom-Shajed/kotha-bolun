@@ -23,12 +23,6 @@ class RegScreen extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    Text('Register Now এবং কথা বলুন!', style: titleTextStyle,),
-                    SizedBox(
-                      height: 200,
-                      child: Image.asset('assets/images/banner.png'),
-                    ),
-                    verticalSpace(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -40,6 +34,14 @@ class RegScreen extends StatelessWidget {
                         Text('KOTHA BOLUN', style: titleTextStyle),
                       ],
                     ),
+                    verticalSpace(),
+                    Text('Welcome to Kotha Bolun!', style: largeTextStyle,),
+                    Text('Enter your details to continue',),
+                    SizedBox(
+                      height: 200,
+                      child: Image.asset('assets/images/banner.png'),
+                    ),
+
                     verticalSpace(),
                     TextFormField(
                       validator: (value) {

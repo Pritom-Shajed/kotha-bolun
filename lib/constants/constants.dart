@@ -10,5 +10,6 @@ final redColor =  Colors.red;
 
 //TextStyle
 const titleTextStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 20);
+const largeTextStyle = TextStyle(fontWeight: FontWeight.bold, fontSize: 26);
 const blueText = TextStyle(color: blueColor);
 

@@ -48,12 +48,6 @@ class Login extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      Text('Login Now, অনেক কথা জমে আছে!', style: titleTextStyle,),
-                      SizedBox(
-                        height: 200,
-                        child: Image.asset('assets/images/banner.png'),
-                      ),
-                      verticalSpace(),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -64,6 +58,13 @@ class Login extends StatelessWidget {
                           horizontalSpace(),
                           Text('KOTHA BOLUN', style: titleTextStyle),
                         ],
+                      ),
+                      verticalSpace(),
+                      Text('Login Now', style: largeTextStyle,),
+                      Text('We missed you!'),
+                      SizedBox(
+                        height: 200,
+                        child: Image.asset('assets/images/banner.png'),
                       ),
                       verticalSpace(),
                       TextFormField(
