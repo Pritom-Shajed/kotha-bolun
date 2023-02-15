@@ -136,7 +136,11 @@ class MessageListItem extends StatelessWidget {
                   imageBuilder: (context, imageProvider) {
                     return ClipRRect(
                       borderRadius: BorderRadius.circular(10),
-                      child: SizedBox(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: greyColor,
+                          borderRadius: BorderRadius.circular(10)
+                        ),
                         width: 200,
                         height: 200,
                         child: InstaImageViewer(
